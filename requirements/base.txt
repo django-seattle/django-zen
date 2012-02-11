@@ -1,3 +1,5 @@
 git+git://github.com/django/django.git
 pycco
 markdown
+django-taggit==0.9.3
+-e hg+https://bitbucket.org/fabian/django-taggit-autosuggest@7622029a917e12588fd134ad7083f32ba9edf30e#egg=django_taggit_autosuggest-tip

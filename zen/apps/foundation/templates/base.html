@@ -1,0 +1,93 @@
+<!doctype html>
+{# paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ #}
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+{# Consider adding a manifest.appcache: h5bp.com/d/Offline #}
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+
+  {% comment %}
+  Use the .htaccess and remove these lines to avoid edge case issues.
+      More info: h5bp.com/b/378
+  {% endcomment %}
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <title>{% block full_title %}{% block title %}{% endblock %} | {{ site.name }}{% endblock %}</title>
+  <meta name="description" content="{% block meta_description %}{% endblock %}">
+  <meta name="author" content="{% block meta_author %}{% endblock %}">
+  {% block meta %}{% endblock %}
+  {# Mobile viewport optimized: j.mp/bplateviewport #}
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  {# Place favicon.ico and apple-touch-icon.png in the root directory: mathiasbynens.be/notes/touch-icons #}
+  {% block styles %}
+  <link rel="stylesheet" href="css/style.css">
+  {% endblock %}
+  {% block extended_styles %}{% endblock %}
+  {# More ideas for your <head> here: h5bp.com/d/head-Tips #}
+
+  {% comment %}
+  All JavaScript at the bottom, except this Modernizr build incl. Respond.js
+  Respond is a polyfill for min/max-width media queries. Modernizr enables HTML5 elements & feature detects; 
+  for optimal performance, create your own custom Modernizr build: www.modernizr.com/download/
+  {% endcomment %}
+  {% block head_scripts %}
+  <script src="js/libs/modernizr-2.0.6.min.js"></script>
+  {% endblock %}
+</head>
+
+{% block body_tag %}<body id="{% block body_id %}{% endblock %}" class="{% block body_class %}{% endblock %}">{% endblock %}
+  
+{% block page %}
+  <header>
+    {% block header %}
+    <h1>Django Zen</h1>
+    {% endblock %}
+  </header>
+  
+  <div role="main">
+    {% block content %}{% endblock %}
+  </div>
+  
+  <footer>
+    {% block footer %}{% endblock %}
+  </footer>
+{% endblock page %}
+
+  {# JavaScript at the bottom for fast page loading #}
+  {% block scripts %}
+  {# Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline #}
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+  <script>window.jQuery || document.write('<script src="js/libs/jquery-1.6.4.min.js"><\/script>')</script>
+
+
+  {# scripts concatenated and minified via build script #}
+  <script defer src="js/plugins.js"></script>
+  <script defer src="js/script.js"></script>
+
+
+  {% comment %}
+  Asynchronous Google Analytics snippet. Change UA-XXXXX-X to be your site's ID.
+      mathiasbynens.be/notes/async-analytics-snippet
+  {% endcomment %}
+  <script>
+    var _gaq=[['_setAccount','{% block gat_id %}{% endblock %}'],['_trackPageview'],['_trackPageLoadTime']];
+    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+    s.parentNode.insertBefore(g,s)}(document,'script'));
+  </script>
+
+  {% comment %}
+  Prompt IE 6 users to install Chrome Frame. Remove this if you want to support IE 6.
+      chromium.org/developers/how-tos/chrome-frame-getting-started
+  {% endcomment %}
+  <!--[if lt IE 7 ]>
+    <script defer src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+    <script defer>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
+  <![endif]-->
+  {% endblock scripts %}
+
+</body>
+</html>
