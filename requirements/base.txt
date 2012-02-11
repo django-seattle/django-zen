@@ -1,1 +1,1 @@
-django
+git+git://github.com/django/django.git
