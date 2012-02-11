@@ -1,4 +1,4 @@
-# Django settings for bootstrap project.
+# Django settings for zen project.
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -81,7 +81,7 @@ STATICFILES_FINDERS = (
 )
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = '-a5+hc0ok5-a2p5kzsjy%py0skou@ax0^7h!4)zcq*zqc%afs#'
+SECRET_KEY = '1d$_mu4&amp;a6)!&amp;$-99aer(cyp88ebk-9f2j4o2%8ko-!6up$gd('
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
@@ -100,10 +100,10 @@ MIDDLEWARE_CLASSES = (
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'bootstrap.urls'
+ROOT_URLCONF = 'zen.urls'
 
 # Python dotted path to the WSGI application used by Django's runserver.
-WSGI_APPLICATION = 'bootstrap.wsgi.application'
+WSGI_APPLICATION = 'zen.wsgi.application'
 
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
